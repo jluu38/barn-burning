@@ -7,6 +7,8 @@ const path = require("path");
 const index = require("./routes/index");
 require("dotenv").config();
 
+const images = require("./models/image");
+
 // static file serving middleware
 app.use(express.static(path.join(__dirname, "public")));
 
