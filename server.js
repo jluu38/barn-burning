@@ -2,10 +2,10 @@
 const express = require('express');
 const app = express();
 app.set("view engine", "ejs");
-
 const path = require("path");
 const index = require("./routes/index");
 require("dotenv").config();
+const mongoose = require('./_connection.js');
 
 const images = require("./models/image");
 
