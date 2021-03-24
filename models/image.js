@@ -1,31 +1,15 @@
-const mongoose = require("./connection.js")
+const mongoose = require("mongoose");
 
-const kittenSchema = new mongoose.Schema({
+const imageSchema = new mongoose.Schema({
   id: Number,
-  name: String,
-  colour: String
+  title: String,
+  summary: String,
+  width: Number,
+  height: Number,
+  localURL: String,
+  imgURL: String,
+  imgCredit: String,
+  imgCreditUrl: String
 });
 
-const Kitten = mongoose.model("Kitten", kittenSchema);
-
-const snowball = new Kitten ({
-  id: 666,
-  name: "Snowball",
-  colour: "white"
-});
-
-snowball.save(function (err, snowball) {
-  if (err) return console.error(err);
-  console.log(snowball);
-})
-
-const finnigan = new Kitten ({
-  id: 420,
-  name: "Finnigan",
-  colour: "tabby"
-});
-
-finnigan.save(function (err, finnigan) {
-  if (err) return console.error(err);
-  console.log(finnigan);
-});
+module.exports = mongoose.model("Image", imageSchema);
