@@ -9,11 +9,27 @@ const images = require("./routes/image");
 require("dotenv").config();
 const mongoose = require('./_connection.js');
 const api = require("./routes/api/v0");
+const index = require("./routes")
+const image = require("./models/image");
+
+app.use(function (request, response, next) {
+  response.locals = {
+    siteTitle: "100 Cinema",
+    tagline: "One auditorium. One hundred seats.",
+    copyright: "&copy; 2021 Jess Luu. MIT License.",
+    // color: color
+  }
+  next();
+})
 
 // static file serving middleware
-app.use(express.static("./public"));
-app.use("/api/v0", api);
+app.use(express.static(path.join(__dirname, "public")));
+
+// app.use("/api/v0", api);
+
+app.get("/", index);
 app.use("/images", images);
+
 
 app.use(function(request, response) {
   response.sendStatus(404);

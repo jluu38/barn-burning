@@ -1,26 +1,18 @@
 const express = require("express");
 const Router = express.Router();
 
-// module for views - see comments for more context
-const randomColor = require("randomcolor");
-const color = randomColor();
-// const color = randomColor({count:10});
-// for (let i = 0; i < color.length; i++){
-//   newColor = color[i];
-// }
-
 Router.use(function (request, response, next) {
   response.locals = {
     siteTitle: "100 Cinema",
     tagline: "One auditorium. One hundred seats.",
     copyright: "&copy; 2021 Jess Luu. MIT License.",
-    color: color
+    // color: color
   }
   next();
 })
 
 Router.get("/", function (request, response) {
-  response.render("pages/index", {
+  response.render("pages/gallery", {
     pageTitle: "Coming Soon."
   });
 })

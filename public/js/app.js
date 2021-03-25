@@ -1,7 +1,7 @@
 "use strict mode";
 
 // fetch api for gallery output
-fetch("http://localhost:3000/api/v0")
+fetch("http://localhost:3000/images/")
   .then(function (response) {
     if (!response.ok) {
       throw new Error("Response was not okay");
@@ -11,7 +11,7 @@ fetch("http://localhost:3000/api/v0")
   // loop from previous assignment
   .then(function (images) {
 
-    for (let i = 0; i < images.length; i++) {
+    for (let i = 0; i >= 1; i++) {
       //constants declared in the order they're nested 
       const gallery = document.querySelector(".grid");
       const figure = document.createElement("figure");
@@ -50,33 +50,33 @@ fetch("http://localhost:3000/api/v0")
     }
 
     // gallery modal/lightbox
-    const modalImages = document.querySelectorAll(".modal-content img");
-    const modalPopUp = document.querySelector(".image-modal-popup");
+    // const modalImages = document.querySelectorAll(".modal-content img");
+    // const modalPopUp = document.querySelector(".image-modal-popup");
 
-    // this function removes the need to declare more constants for modal-specific elements
-    function modalElement(element) {
-      return document.querySelector(`.image-modal-popup ${element}`);
-    }
+    // // this function removes the need to declare more constants for modal-specific elements
+    // function modalElement(element) {
+    //   return document.querySelector(`.image-modal-popup ${element}`);
+    // }
 
     // changes made to the modal's child elements when an image is clicked
-    modalImages.forEach(img => {
-      img.addEventListener("click", e => {
-        e.stopPropagation();
-        modalPopUp.classList.toggle("reveal");
-        modalElement("img").src = img.src;
-        modalElement("img").alt = img.alt;
-        modalElement("p").innerText = "Original size: " + img.naturalWidth + "px" + " x " + img.naturalHeight + "px";
+    // modalImages.forEach(img => {
+    //   img.addEventListener("click", e => {
+    //     e.stopPropagation();
+    //     modalPopUp.classList.toggle("reveal");
+    //     modalElement("img").src = img.src;
+    //     modalElement("img").alt = img.alt;
+    //     modalElement("p").innerText = "Original size: " + img.naturalWidth + "px" + " x " + img.naturalHeight + "px";
 
-        if (img.naturalHeight >= 700) {
-          modalElement("img").height = 700;
-        } else {
-          modalElement("img").height = img.naturalHeight;
-        }
-      });
-    });
-    document.addEventListener("click", () => {
-      modalPopUp.classList.remove("reveal");
-    });
+    //     if (img.naturalHeight >= 700) {
+    //       modalElement("img").height = 700;
+    //     } else {
+    //       modalElement("img").height = img.naturalHeight;
+    //     }
+    //   });
+    // });
+    // document.addEventListener("click", () => {
+    //   modalPopUp.classList.remove("reveal");
+    // });
   })
   .catch(function (error) {
     console.log(error);
