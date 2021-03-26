@@ -1,7 +1,7 @@
 "use strict mode";
 
 // fetch api for gallery output
-fetch("http://localhost:3000/images/")
+fetch("/images")
   .then(function (response) {
     if (!response.ok) {
       throw new Error("Response was not okay");
