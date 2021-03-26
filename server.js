@@ -8,7 +8,7 @@ const path = require("path");
 const images = require("./routes/image");
 require("dotenv").config();
 const mongoose = require('./_connection.js');
-const api = require("./routes/api/v0");
+// const api = require("./routes/api/v0");
 const index = require("./routes")
 const image = require("./models/image");
 
